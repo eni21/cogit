@@ -1,3 +1,2 @@
 install_requirements:
-	cd src
-	pip install -r .\requirements.txt -t .\packages
+	pip3 install -r ./src/requirements.txt -t ./src/packages
