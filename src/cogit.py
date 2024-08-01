@@ -1,14 +1,5 @@
 from packages import click
-#import packages.click
 import json
-# import sys
-#import context
-
-# import os
-# import sys
-# rootPath = os.path.abspath(os.path.join(os.path.dirname(__file__), '..'))
-# sys.path.insert(0, rootPath)
-
 from actions.config_action import ConfigAction
 from actions.change_log_action import ChangeLogAction
 from actions.current_version_action import CurrentVersionAction
