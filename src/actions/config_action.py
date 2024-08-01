@@ -1,8 +1,8 @@
-from actions.base_action import BaseAction
+from src.io.config import Config
 
-class ConfigAction(BaseAction):
+class ConfigAction():
     def __init__(self, config_filename):
-        BaseAction.__init__(self, config_filename)
+        self.__config_filename = config_filename
 
     def run(self):
-        return self.config
+        return Config(self.__config_filename).get_config()

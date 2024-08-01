@@ -1,12 +1,21 @@
 from packages import click
 import json
+import sys
+import context
 
-from actions.config_action import ConfigAction
-from actions.change_log_action import ChangeLogAction
-from actions.current_version_action import CurrentVersionAction
-from actions.next_version_action import NextVersionAction
-from actions.bump_action import BumpAction
-from version import version as cogit_version
+from src.actions.config_action import ConfigAction
+from src.actions.change_log_action import ChangeLogAction
+from src.actions.current_version_action import CurrentVersionAction
+from src.actions.next_version_action import NextVersionAction
+from src.actions.bump_action import BumpAction
+from src.actions.debug_convention import DebugConvention
+from src.actions.debug_git_messages import DebugGitMessages
+from src.actions.debug_git_messages_raw import DebugGitMessagesRaw
+from src.actions.debug_git_versions import DebugGitVersions
+from src.actions.lint_action import LintAction
+from src.actions.lint_enable_action import LintEnableAction
+from src.actions.lint_disable_action import LintDisableAction
+from src.version import version as cogit_version
 
 def run_action(action):
     result = action.run()
@@ -18,14 +27,43 @@ def run_action(action):
         click.echo(json.dumps(result, indent=2, sort_keys=True))
 
 config_option = click.option('--config', default=None,  help='Config file') #type=click.Path(exists=True),
+limit_option = click.option('--limit', default=0, help='Limit versions output')
 
 @click.group()
 def cli():
     pass
 
+# debug
+
+@cli.command()
+@config_option
+@limit_option
+def debug_git_messages(config, limit):
+    run_action(DebugGitMessages(config, limit))
+
+@cli.command()
+@config_option
+@limit_option
+def debug_git_messages_raw(config, limit):
+    run_action(DebugGitMessagesRaw(config, limit))
+
+@cli.command()
+@config_option
+@limit_option
+def debug_git_versions(config, limit):
+    run_action(DebugGitVersions(config, limit))
+
+@cli.command()
+@config_option
+@limit_option
+def debug_convention(config, limit):
+    run_action(DebugConvention(config, limit))
+
+# main
+
 @cli.command()
 def version():
-    click.echo(f'Co-Git Version {cogit_version}')
+    click.echo(f'CoGit Version {cogit_version}')
 
 @cli.command()
 @config_option
@@ -34,8 +72,9 @@ def config(config):
 
 @cli.command()
 @config_option
-def change_log(config):
-    run_action(ChangeLogAction(config))
+@limit_option
+def change_log(config, limit):
+    run_action(ChangeLogAction(config, limit))
 
 @cli.command()
 @config_option
@@ -52,6 +91,25 @@ def next_version(config):
 @click.argument('version')
 def bump(config, version):
     run_action(BumpAction(config, version))
+
+# lint
+
+@cli.command()
+@config_option
+def lint(config):
+    run_action(LintAction(config))
+
+@cli.command()
+@config_option
+def lint_enable(config):
+    run_action(LintEnableAction(config))
+
+@cli.command()
+@config_option
+def lint_disabe(config):
+    run_action(LintDisableAction(config))
+
+# commit
 
 @cli.command()
 @config_option

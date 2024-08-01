@@ -1,13 +1,11 @@
-from actions.base_action import BaseAction
+from src.io.config import Config
+from src.io.git import Git
+from src.services.current_version_service import CurrentVersionService
 
-class CurrentVersionAction(BaseAction):
+class CurrentVersionAction():
     def __init__(self, config_filename):
-        BaseAction.__init__(self, config_filename)
-
+        self.__cfg = Config(config_filename).get_config()
+        self.__git = Git(self.__cfg)
     def run(self):
-        versions = self.git.get_versions()
-        current_version = self.semver.stringify_version(self.semver.get_version())
-        if len(versions) > 0:
-            key = list(versions.keys())[0]
-            current_version = versions[key]
-        return current_version
+        versions = self.__git.get_versions()
+        return CurrentVersionService(self.__cfg).run(versions)

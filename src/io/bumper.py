@@ -2,9 +2,6 @@ import os
 import re
 
 class Bumper:
-    def __init__(self, config):
-        self.config = config
-
     def bump(self, filename, pattern, version):
         content = self.__read_file(filename)
         content = self.__replace_version(content, pattern, version)

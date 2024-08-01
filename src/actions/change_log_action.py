@@ -1,19 +1,14 @@
-from actions.base_action import BaseAction
+from src.io.config import Config
+from src.io.git import Git
+from src.services.change_log_service import ChangeLogService
 
-class ChangeLogAction(BaseAction):
-    def __init__(self, config_filename):
-        BaseAction.__init__(self, config_filename)
+class ChangeLogAction():
+    def __init__(self, config_filename, limit):
+        self.__cfg = Config(config_filename).get_config()
+        self.__git = Git(self.__cfg)
+        self.__limit = limit
     
     def run(self):
-        messages = self.git.get_messages()
-        versions = self.git.get_versions()
-        lines = ''
-        for hash, message in messages.items():
-            if (hash in versions):
-                if (lines != ''):
-                    lines += '\n'
-                lines += versions[hash] + '\n\n'
-            elif (lines == ''):
-                lines += '*new*\n\n'
-            lines += '\t' + message + '\n'
-        return lines
+        messages = self.__git.get_messages()
+        versions = self.__git.get_versions()
+        return ChangeLogService().run(messages, versions, self.__limit)

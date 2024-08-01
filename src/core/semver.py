@@ -2,11 +2,11 @@ import re
 
 class Semver:
     def __init__(self, cfg):
-        self.cfg = cfg
-        self.pattern_re = self.__get_pattern_re()
+        self.__cfg = cfg
+        self.__pattern_re = self.__get_pattern_re()
 
     def __get_pattern_re(self):
-        pattern = self.cfg['pattern']
+        pattern = self.__cfg['pattern']
         pattern = re.sub(r'\{major\}|\{minor\}|\{patch\}', '([0-9]+)', pattern)
         pattern = re.sub(r'\.', '\.', pattern)
         return pattern
@@ -19,14 +19,14 @@ class Semver:
         }
 
     def stringify_version(self, version):
-        pattern = self.cfg['pattern']
+        pattern = self.__cfg['pattern']
         pattern = re.sub(r'\{major\}', str(version['major']), pattern)
         pattern = re.sub(r'\{minor\}', str(version['minor']), pattern)
         pattern = re.sub(r'\{patch\}', str(version['patch']), pattern)
         return pattern
 
     def parse_version(self, string):
-        match = re.search(self.pattern_re, string)
+        match = re.search(self.__pattern_re, string)
         if match == None:
             return None
         return {
