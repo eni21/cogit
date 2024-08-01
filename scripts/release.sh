@@ -50,7 +50,7 @@ step "Add changes"
 git add --all
 
 step "Commit"
-git commit --message "Bump version to $NEXT_VERSION"
+git commit --message "chore: bump version to $NEXT_VERSION"
 
 step "Add tag"
 git tag $NEXT_VERSION
