@@ -17,14 +17,14 @@ function error {
     echo -e "\n$RED$ERROR: $1$NC\n"
 }
 
-# step "Check repository"
-# if git status | grep -q 'nothing to commit, working tree clean'
-# then
-#     echo 'Repository has not changes'
-# else
-#     error 'Repository has local changes, please commit changes and try again'
-#     exit 1
-# fi
+step "Check repository"
+if git status | grep -q 'nothing to commit, working tree clean'
+then
+    echo 'Repository has not changes'
+else
+    error 'Repository has local changes, please commit changes and try again'
+    exit 1
+fi
 
 step "Calculating version"
 CURRENT_VERSION=$($cogit current-version)
@@ -52,21 +52,11 @@ git add --all
 step "Commit"
 git commit --message "Bump version to $NEXT_VERSION"
 
-# step "Add tag"
-# git tag $NEXT_VERSION
+step "Add tag"
+git tag $NEXT_VERSION
 
-# step "Push changes"
-# git push origin $(git rev-parse --abbrev-ref HEAD)
+step "Push changes"
+git push origin $(git rev-parse --abbrev-ref HEAD)
 
-# step "Push tags"
-# git push origin $NEXT_VERSION
-
-
-# git flow release start $VERSION
-# git flow release finish -m "version: $VERSION" $VERSION
-# git checkout dev
-# git push origin $(git rev-parse --abbrev-ref HEAD)
-# git checkout master
-# git push origin $(git rev-parse --abbrev-ref HEAD)
-# git push origin $VERSION
-# git checkout dev
+step "Push tags"
+git push origin $NEXT_VERSION
