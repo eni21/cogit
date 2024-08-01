@@ -1,5 +1,6 @@
 import unittest
-from src.services.change_log_service import ChangeLogService
+import tests.context
+from services.change_log_service import ChangeLogService
 
 class ChangeLogServiceTests(unittest.TestCase):
     # run

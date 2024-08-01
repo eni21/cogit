@@ -1,5 +1,5 @@
-from src.core.semver import Semver
-from src.core.convention import Convention
+from core.semver import Semver
+from core.convention import Convention
 
 class NextVersionService:
     def __init__(self, cfg):

@@ -1,6 +1,6 @@
-from src.io.config import Config
-from src.io.git import Git
-from src.services.current_version_service import CurrentVersionService
+from providers.config import Config
+from providers.git import Git
+from services.current_version_service import CurrentVersionService
 
 class CurrentVersionAction():
     def __init__(self, config_filename):

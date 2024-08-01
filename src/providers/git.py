@@ -1,5 +1,5 @@
 import subprocess
-from src.core.git_parser import GitParser
+from core.git_parser import GitParser
 
 class Git:
     def __init__(self, cfg):

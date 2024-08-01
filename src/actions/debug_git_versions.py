@@ -1,5 +1,5 @@
-from src.io.config import Config
-from src.io.git import Git
+from providers.config import Config
+from providers.git import Git
 
 class DebugGitVersions():
     def __init__(self, config_filename, limit):

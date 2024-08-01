@@ -1,5 +1,5 @@
 import re
-from src.core.semver import Semver
+from core.semver import Semver
 
 class GitParser:
     def __init__(self, cfg):

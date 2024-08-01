@@ -1,4 +1,4 @@
-from src.io.config import Config
+from providers.config import Config
 
 class ConfigAction():
     def __init__(self, config_filename):

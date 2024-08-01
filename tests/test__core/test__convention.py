@@ -1,4 +1,5 @@
 import unittest
+import tests.context
 from src.core.config_default import config_default
 from src.core.convention import Convention
 

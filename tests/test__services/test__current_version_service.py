@@ -1,6 +1,7 @@
 import unittest
-from src.core.config_default import config_default
-from src.services.current_version_service import CurrentVersionService
+import tests.context
+from core.config_default import config_default
+from services.current_version_service import CurrentVersionService
 
 class CurrentVersionServiceTests(unittest.TestCase):
 

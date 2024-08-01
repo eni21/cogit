@@ -1,5 +1,5 @@
-from src.io.config import Config
-from src.io.bumper import Bumper
+from providers.config import Config
+from providers.bumper import Bumper
 
 class BumpAction():
     def __init__(self, config_filename, version_str):
@@ -8,5 +8,11 @@ class BumpAction():
         self.__version_str = version_str
 
     def run(self):
+        result = ''
         for item in self.__cfg['bumps']:
-            self.__bumper.bump(item['filename'], item['pattern'], self.__version_str)
+            if result != '':
+                result += '\n'
+            filename = item['filename']
+            self.__bumper.bump(filename, item['pattern'], self.__version_str)
+            result += f'Bumped {filename} to {self.__version_str}'
+        return result

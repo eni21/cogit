@@ -46,7 +46,7 @@ test__all:
 	python3 -m unittest discover -s tests -v
 
 test__core:
-	python3 -m unittest discover -s tests/core -v
+	python3 -m unittest discover -s tests/test__core -v
 
 test__services:
 	python3 -m unittest discover -s tests/services -v
@@ -71,4 +71,3 @@ build__windows:
 build__linux:
 	pyinstaller --onefile src/cogit.py
 	rm cogit.spec
-

@@ -1,6 +1,6 @@
-from src.io.config import Config
-from src.io.git import Git
-from src.services.change_log_service import ChangeLogService
+from providers.config import Config
+from providers.git import Git
+from services.change_log_service import ChangeLogService
 
 class ChangeLogAction():
     def __init__(self, config_filename, limit):

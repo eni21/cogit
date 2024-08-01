@@ -17,14 +17,14 @@ function error {
     echo -e "\n$RED$ERROR: $1$NC\n"
 }
 
-# step "Check repository"
-# if git status | grep -q 'nothing to commit, working tree clean'
-# then
-#     echo 'Repository has not changes'
-# else
-#     error 'Repository has local changes, please commit changes and try again'
-#     exit 1
-# fi
+step "Check repository"
+if git status | grep -q 'nothing to commit, working tree clean'
+then
+    echo 'Repository has not changes'
+else
+    error 'Repository has local changes, please commit changes and try again'
+    exit 1
+fi
 
 step "Calculating version"
 CURRENT_VERSION=$($cogit current-version)

@@ -1,6 +1,6 @@
-from src.io.config import Config
-from src.io.git import Git
-from src.core.convention import Convention
+from providers.config import Config
+from providers.git import Git
+from core.convention import Convention
 
 class DebugConvention():
     def __init__(self, config_filename, limit):

@@ -1,6 +1,6 @@
-from src.io.config import Config
-from src.io.git import Git
-from src.services.next_version_service import NextVersionService
+from providers.config import Config
+from providers.git import Git
+from services.next_version_service import NextVersionService
 
 class NextVersionAction():
     def __init__(self, config_filename):

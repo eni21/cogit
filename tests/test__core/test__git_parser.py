@@ -1,4 +1,5 @@
 import unittest
+import tests.context
 from src.core.config_default import config_default
 from src.core.git_parser import GitParser
 from src.core.semver import Semver

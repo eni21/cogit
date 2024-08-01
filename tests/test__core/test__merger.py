@@ -1,5 +1,6 @@
 import unittest
-from src.core.merger import Merger
+import tests.context
+from core.merger import Merger
 
 class MergerTests(unittest.TestCase):
     # merge_dicts

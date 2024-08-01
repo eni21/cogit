@@ -12,6 +12,9 @@ import json
 rootPath = os.path.abspath(os.path.join(os.path.dirname(__file__), '..'))
 sys.path.insert(0, rootPath)
 
+packagePath = os.path.abspath(os.path.join(os.path.dirname(__file__), 'packages'))
+sys.path.insert(1, packagePath)
+
 # print(f'rootPath={rootPath}')
 # print(f'sys.path={json.dumps(sys.path, indent=2)}')
 

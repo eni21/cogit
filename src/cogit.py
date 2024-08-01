@@ -1,21 +1,27 @@
 from packages import click
+#import packages.click
 import json
-import sys
-import context
+# import sys
+#import context
 
-from src.actions.config_action import ConfigAction
-from src.actions.change_log_action import ChangeLogAction
-from src.actions.current_version_action import CurrentVersionAction
-from src.actions.next_version_action import NextVersionAction
-from src.actions.bump_action import BumpAction
-from src.actions.debug_convention import DebugConvention
-from src.actions.debug_git_messages import DebugGitMessages
-from src.actions.debug_git_messages_raw import DebugGitMessagesRaw
-from src.actions.debug_git_versions import DebugGitVersions
-from src.actions.lint_action import LintAction
-from src.actions.lint_enable_action import LintEnableAction
-from src.actions.lint_disable_action import LintDisableAction
-from src.version import version as cogit_version
+# import os
+# import sys
+# rootPath = os.path.abspath(os.path.join(os.path.dirname(__file__), '..'))
+# sys.path.insert(0, rootPath)
+
+from actions.config_action import ConfigAction
+from actions.change_log_action import ChangeLogAction
+from actions.current_version_action import CurrentVersionAction
+from actions.next_version_action import NextVersionAction
+from actions.bump_action import BumpAction
+from actions.debug_convention import DebugConvention
+from actions.debug_git_messages import DebugGitMessages
+from actions.debug_git_messages_raw import DebugGitMessagesRaw
+from actions.debug_git_versions import DebugGitVersions
+from actions.lint_action import LintAction
+from actions.lint_enable_action import LintEnableAction
+from actions.lint_disable_action import LintDisableAction
+from version import version as cogit_version
 
 def run_action(action):
     result = action.run()

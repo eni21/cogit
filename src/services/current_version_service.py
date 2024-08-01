@@ -1,4 +1,4 @@
-from src.core.semver import Semver
+from core.semver import Semver
 
 class CurrentVersionService:
     def __init__(self, cfg):

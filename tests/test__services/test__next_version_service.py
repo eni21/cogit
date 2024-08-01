@@ -1,6 +1,7 @@
 import unittest
-from src.core.config_default import config_default
-from src.services.next_version_service import NextVersionService
+import tests.context
+from core.config_default import config_default
+from services.next_version_service import NextVersionService
 
 class NextVersionServiceTests(unittest.TestCase):
 

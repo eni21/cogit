@@ -1,7 +1,7 @@
 import os.path
 import json
-from src.core.merger import Merger
-from src.core.config_default import config_default
+from core.merger import Merger
+from core.config_default import config_default
 
 class Config:
     def __init__(self, filename = None):
