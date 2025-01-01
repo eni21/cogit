@@ -40,7 +40,7 @@ fi
 step "Switch to main"
 git checkout main
 
-step "Pull"
+step "Pull commits"
 git pull origin $(git rev-parse --abbrev-ref HEAD)
 
 step "Bump version"
@@ -49,13 +49,13 @@ $cogit bump $NEXT_VERSION
 step "Add changes"
 git add --all
 
-step "Commit"
+step "Add commit"
 git commit --message "chore: bump version to $NEXT_VERSION"
 
 step "Add tag"
 git tag $NEXT_VERSION
 
-step "Push changes"
+step "Push commits"
 git push origin $(git rev-parse --abbrev-ref HEAD)
 
 step "Push tags"

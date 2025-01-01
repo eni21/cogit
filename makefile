@@ -63,11 +63,20 @@ release:
 
 install__build_requirements:
 	pip3 install pyinstaller
+	pip3 install stickytape
 
 build__windows:
 	pyinstaller.exe --onefile src/cogit.py
 	del /s /q cogit.spec
+	rmdir build
 
 build__linux:
 	pyinstaller --onefile src/cogit.py
 	rm cogit.spec
+	rm -rf build
+
+build__zipapp:
+	python3 -m zipapp src -m cogit:cli -o dist/cogit.pyz
+
+build__stickytape:
+	stickytape src/cogit.py --add-python-path . > dist/cogit.py
