@@ -68,10 +68,13 @@ install__build_requirements:
 	pip3 install pyinstaller
 	pip3 install stickytape
 
+# NOTE: Add path 
+# C:\Users\denla\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.13_qbz5n2kfra8p0\LocalCache\local-packages\Python313\Scripts
+
 build__windows:
 	pyinstaller.exe --onefile src/cogit.py
 	del /s /q cogit.spec
-	rmdir build
+	rmdir /s /q build
 
 build__linux:
 	pyinstaller --onefile src/cogit.py
