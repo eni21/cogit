@@ -54,6 +54,9 @@ test__services:
 test__git_parser:
 	python3 -m unittest discover -s tests/core -p test_git_parser.py -v
 
+test__git_bumper:
+	python3 -m unittest discover -s tests/test__providers -p test__bumper.py -v
+
 ### RELEASE
 
 release:

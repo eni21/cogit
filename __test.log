@@ -1,0 +1,6 @@
+{self.__tmp_dir}/*/*.csproj
+tests/tmp/test_bumper/*/*.csproj
+tests/tmp/test_bumperbump_01/*/*.csproj
+tests/tmp/test_bumper/bump_01/*/*.csproj
+---tests/tmp/test_bumper/bump_01\dotnet.proj1\dotnet.proj1.csproj
+---tests/tmp/test_bumper/bump_01\dotnet.proj2\dotnet.proj2.csproj

@@ -1,11 +1,19 @@
 import os
 import re
+import glob
 
 class Bumper:
     def bump(self, filename, pattern, version):
-        content = self.__read_file(filename)
-        content = self.__replace_version(content, pattern, version)
-        self.__write_file(filename, content)
+        files = glob.glob(filename)
+        # with open('__test.log', 'a') as out:
+        #     out.write(filename + '\n')
+        #     for file in files:
+        #         out.write('---' + file + '\n')
+
+        for file in files:
+            content = self.__read_file(file)
+            content = self.__replace_version(content, pattern, version)
+            self.__write_file(file, content)
 
     def __get_find(self, pattern):
         return re.sub(r'\{version\}', '.+', pattern)
